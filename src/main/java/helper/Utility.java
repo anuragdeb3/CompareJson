@@ -1,5 +1,9 @@
 package helper;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,6 +96,21 @@ public class Utility {
 	public static boolean isNullOrEmpty( Map< ?,? > map ) {
 	    return map == null || map.isEmpty();
 	}
-	
+
+
+
+	public static String loadJsonToString(String path) {
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			return objectMapper.readTree(new File(path)).toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "{}"; // Return an empty JSON object instead of null
+		}
+
+	}
+
+
 
 }

@@ -14,7 +14,11 @@ public class CompareJsonString {
 		void testCompareJson() {
 
 		try {
-			Utility.compareJsons(Payload.actualJson(),Payload.expectedJson());
+			String actualJson = Utility.loadJsonToString("src/test/resources/PayloadJson/actual.json");
+			String expectedJson = Utility.loadJsonToString("src/test/resources/PayloadJson/expected.json");
+
+
+			Utility.compareJsons(actualJson,expectedJson);
 			
 			
 		} catch (JsonMappingException e) {
